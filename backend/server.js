@@ -3,7 +3,11 @@ const app = express();
 
 const products =require("./data/products.js");
 
+const cors = require("cors");
 
+
+// to run both server
+app.use(cors());
 
 app.get('/',(req, res) => {
     res.send('API Server  is working')

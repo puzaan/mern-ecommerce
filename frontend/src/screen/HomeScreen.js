@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
+import axios from 'axios'
 import { Col, Row } from 'react-bootstrap'
-import products from '../products'
 import Product from '../components/Product'
 
 
@@ -13,9 +13,13 @@ const HomeScreen = () => {
 
     useEffect (() =>{
     const fetchProduct = async () => {
-        
+        const res = await axios.get("http://localhost:5000/api/products");
+        const data = res.data;
+
+        setProducts(data);
     }
-    })
+    fetchProduct();
+    },[])
 
     return (
         <>
