@@ -1,16 +1,23 @@
+import React from 'react';
+import Footer from './components/Footer';
+import Header from './components/Header';
 
-import './App.css';
-import Footer from './component/Footer';
-import Header from './component/Header';
 
-function App() {
+const App = () => {
   return (
     <>
-    <Header/>
-<h1> Well come to </h1>
-<Footer/>
+    <Header />
+
+      <main>
+        <h1>
+          this is is
+    </h1>
+
+      </main>
+      <Footer />
+
     </>
-  );
+  )
 }
 
-export default App;
+export default App
