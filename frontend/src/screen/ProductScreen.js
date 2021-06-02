@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import { Image, Row, Col, Card, ListGroup, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Rating from "../components/Rating";
@@ -7,6 +7,17 @@ import products from "../products";
 const ProductScreen = ({ match }) => {
     const product = products.find((p) => p._id === match.params.id);
     console.log(product);
+
+
+//const [product, setProduct] = useState ({});
+
+// useEffect ( ()=> {
+
+// })
+
+
+
+
     return (
         <>
             <Link className="btn btn-light my-3" to="/">
