@@ -1,6 +1,25 @@
 import mongoose from "mongoose"
 
 
+
+const reviewSchema = mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    rating: {
+        type: Number,
+        required: true
+    },
+    comment: {
+        type: String,
+        required: true
+    },
+},{
+    timeStamp: true
+});
+
+
 const productSchema = mongoose.Schema({
     name: {
         type: String,
@@ -47,7 +66,8 @@ const productSchema = mongoose.Schema({
         type: Number,
         required: true,
         default: 0
-    }
+    },
+    reviews: [reviewSchema],
 
 },{
     timeStamp:true,
@@ -55,4 +75,4 @@ const productSchema = mongoose.Schema({
 
 
 const Product = mongoose.model("product", productSchema);
-export default Product
+export default Product 
