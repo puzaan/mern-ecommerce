@@ -1,10 +1,24 @@
-const express = require('express');
+// const express = require('express');
+// 
+
+// const products =require("./data/products.js");
+
+// const cors = require("cors");
+// const dotenv = require('dotenv');
+
+// After adding "type": "model" in pac.json we can do like this
+
+
+import express from 'express';
+import products from './data/products.js';
+import cors from 'cors';
+import dotenv from 'dotenv';
+
+
+
+
 const app = express();
 
-const products =require("./data/products.js");
-
-const cors = require("cors");
-const dotenv = require('dotenv');
 dotenv.config();
 
 
