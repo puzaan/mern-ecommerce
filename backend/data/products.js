@@ -4,7 +4,7 @@ const products = [
     numReviews: 1,
     price: 5.66,
     countInStock: 10,
-    _id: "606dda21230ce54d2acc4f5b",
+
     name: "Bamboo Bansuri â€“ Simple",
     image: "/uploads/image-1617965037806.jpeg",
     description:
@@ -32,7 +32,6 @@ const products = [
     numReviews: 1,
     price: 10.99,
     countInStock: 5,
-    _id: "606dda21230ce54d2acc4f5c",
     name: "Cotton Baba Bag",
     image: "/uploads/image-1617965121497.jpeg",
     description:
@@ -60,7 +59,6 @@ const products = [
     numReviews: 1,
     price: 799.5,
     countInStock: 2,
-    _id: "606dda21230ce54d2acc4f5d",
     name: "Goddess Saraswoti",
     image: "/uploads/image-1617965453809.jpeg",
     description:
@@ -88,7 +86,6 @@ const products = [
     numReviews: 1,
     price: 12.99,
     countInStock: 6,
-    _id: "606dda21230ce54d2acc4f5e",
     name: "Green Tara",
     image: "/uploads/image-1617965643165.jpg",
     description:
@@ -106,7 +103,6 @@ const products = [
     numReviews: 0,
     price: 3.99,
     countInStock: 15,
-    _id: "606dda21230ce54d2acc4f5f",
     name: "Pashmina Shawl",
     image: "/uploads/image-1617965875208.jpeg",
     description: "100% Pashmina Shawl",
@@ -123,7 +119,6 @@ const products = [
     numReviews: 0,
     price: 19.99,
     countInStock: 0,
-    _id: "606dda21230ce54d2acc4f60",
     name: " Abhayamudra Buddha",
     image: "/uploads/image-1617966025181.jpeg",
     description:
@@ -141,7 +136,6 @@ const products = [
     numReviews: 0,
     price: 0,
     countInStock: 0,
-    _id: "607046e1fd5da503cb0c48fa",
     name: "Sample name",
     user: "606dda21230ce54d2acc4f58",
     image: "/uploads/image-1617966025182.png",
