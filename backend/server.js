@@ -14,6 +14,7 @@ import products from './data/products.js';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/dbSetting.js'
+import colors from 'colors'
 
 
 
@@ -44,4 +45,4 @@ app.get('/api/products/:id', (req, res)=>{
 
 const PORT = process.env.PORT || 5000
 
-app.listen(PORT, console.log(`server is running on port ${PORT}`))
+app.listen(PORT, console.log(`server is running on port ${PORT}`.yellow.bold))
