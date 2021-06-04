@@ -16,7 +16,9 @@ import dotenv from 'dotenv';
 import connectDB from './config/db.js'
 import colors from 'colors'
 
-import productRoutes from './routes/productRoutes.js'
+import productRoutes from './routes/productRoutes.js';
+
+import {notFound, errorHandler} from './middlewares/erroMiddleware.js'
 
 dotenv.config();
 
@@ -29,10 +31,7 @@ app.use(cors());
 
 
 
-app.get('/',(req, res) => {
-    res.send('API Server  is working')
-}
-);
+
 // while using hard code data from data/products.js
 // app.get('/api/products', (req, res) => {
 //     res.json(products)
@@ -46,11 +45,14 @@ app.get('/',(req, res) => {
 
 // from mongoose database
 
-
+app.get('/',(req, res) => {
+    res.send('API Server  is working')
+}
+);
 
 app.use('/api/products', productRoutes);
-
-
+app.use(notFound);
+app.use(errorHandler);
 
 
 const PORT = process.env.PORT || 5000
