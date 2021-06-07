@@ -3,6 +3,8 @@ import { Col, Row } from 'react-bootstrap'
 import Product from '../components/Product'
 import {listProducts} from '../actions/productActions'
 import {useDispatch, useSelector} from 'react-redux'
+import Loader from '../components/Loder.js'
+import Message from '../components/Message.js'
 
 
 
@@ -24,9 +26,9 @@ useEffect(()=>{
         
         <Row>
             {loading ? (
-            <h2>Loading...</h2>
+            <Loader />
             ) : error ? (
-            <h2>Error...{error} </h2>
+            <Message variant ="danger">{error}</Message>
             ) : (
                 products.map((product) => (
                 <Col sm={12} md={6} lg={4} xl={3}>
