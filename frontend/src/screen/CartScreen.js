@@ -1,24 +1,32 @@
 import React, { useEffect } from "react";
-import { Col, Form, Image, ListGroup, Row } from "react-bootstrap";
+import { Button, Col, Form, Image, ListGroup, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { addToCart } from "../actions/cartActions";
+import { addToCart, removeFromCart } from "../actions/cartActions";
 import Message from "../components/Message";
 
-const CartScreen = ({ match }) => {
+const CartScreen = ({ match, history,location }) => {
     const productId = match.params.id;
 
     console.log(productId);
+
+    const qty = location.search ? Number(location.search.split("=")[1]) : 1
 
     const dispatch = useDispatch();
     const cart = useSelector((state) => state.cart);
 
     const { cartItems } = cart;
     useEffect(() => {
+
         if (productId) {
-            dispatch(addToCart(productId, 2));
+            dispatch(addToCart(productId, qty));
         }
-    }, [dispatch, productId]);
+    }, [dispatch, productId, qty]);
+
+
+    const removeFromCartHandler = (productId) => {
+dispatch(removeFromCart(productId));
+    }
 
     return (
         <Row>
@@ -61,6 +69,16 @@ const CartScreen = ({ match }) => {
                                                 </option>
                                             ))}
                                         </Form.Control>
+                                    </Col>
+                                    <Col md ={2}>
+                                        <Button type='button'
+                                        variant='light'
+                                        onClick={()=> removeFromCartHandler(items.product)}
+
+                                        >
+                                            <i className='fas fa-trash'></i>
+                                            
+                                        </Button>
                                     </Col>
                                 </Row>
                             </ListGroup.Item>
