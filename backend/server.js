@@ -17,6 +17,7 @@ import connectDB from './config/db.js'
 import colors from 'colors'
 
 import productRoutes from './routes/productRoutes.js';
+import userRouters from './routes/userRoutes.js'
 
 import {notFound, errorHandler} from './middlewares/erroMiddleware.js'
 
@@ -27,6 +28,9 @@ connectDB();
 
 const app = express();
 // to run both server
+
+
+app.use(express.json());
 app.use(cors());
 
 
@@ -51,6 +55,7 @@ app.get('/',(req, res) => {
 );
 
 app.use('/api/products', productRoutes);
+app.use('/api/users', userRouters);
 app.use(notFound);
 app.use(errorHandler);
 
