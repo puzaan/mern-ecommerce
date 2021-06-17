@@ -24,3 +24,13 @@ res.status(401);
 
 });
 
+//@ des GET USER PROFILE
+//@rout GET /api/users/profile
+//@access private
+
+
+const getUserProfile =catchAsync(async (req, res) => {
+    const user = await User.findById();
+});
+
+
