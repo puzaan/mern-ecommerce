@@ -41,6 +41,6 @@ userSchema.methods.matchPassword = async function (enteredPassword){
 }
 
 const User = mongoose.model("User", userSchema);
-//model helps to create variable in like sujan:" "
+//model helps to create variable  like sujan:" "
 
 export default User;
