@@ -45,6 +45,49 @@ export const getUserProfile = catchAsync(async (req, res) => {
     }
 })
 
+// dec update user profile
+// rout put /api/user/profile
+// acces private
+
+
+export const updateUserProfile = catchAsync(
+  async(req, res) => {
+    // check user exist in data base
+    const user = await User.findById(req.user._id);
+
+    if(user){
+      // cange value if there is new value otherwise same
+      user.name = req.body.name || user.name;
+      user.email = req.body.email || user.email;
+
+
+      if(req.body.password){
+        user.password = req.body.password;
+      }
+
+      const updatedUser = await user.save();
+      res.json({
+        _id: updatedUser.id,
+        name: updatedUser.name,
+        email: updatedUser.email,
+        password: updatedUser.password,
+        isAdmin: updatedUser.isAdmin,
+        token: generateToken(updatedUser._id),
+
+
+
+        
+      });
+    }else{
+      res.status(404);
+      throw new Error("user belonging to this token no longer exist")
+    }
+  }
+)
+
+
+
+
 //description register aa new user
 //rout Post/api/user
 // access public
