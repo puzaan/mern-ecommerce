@@ -34,12 +34,11 @@ export const login = (email, password) => async (dispatch) => {
         localStorage.setItem("userInfo", JSON.stringify(data));
     } catch (err) {
         dispatch({
-            type: USER_LOGIN_FAIL,
-
-            payload:
-                err.response && err.response.data.message
-                    ? err.response.data.message
-                    : err.message,
+          type: USER_LOGIN_FAIL,
+          payload:
+            err.response && err.response.data.message
+              ? err.response.data.message
+              : err.message,
         });
     }
 };
@@ -63,12 +62,11 @@ export const register = (name, email, password) => async (dispatch) => {
         localStorage.setItem("userInfo", JSON.stringify(data));
     } catch (err) {
         dispatch({
-            type: USER_REGISTER_FAIL,
-
-            payload:
-                err.response && err.response.data.message
-                    ? err.response.data.message
-                    : err.message,
+          type: USER_REGISTER_FAIL,
+          payload:
+            err.response && err.response.data.message
+              ? err.response.data.message
+              : err.message,
         });
     }
 };

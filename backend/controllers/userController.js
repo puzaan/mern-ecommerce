@@ -52,34 +52,32 @@ export const getUserProfile = catchAsync(async (req, res) => {
 
 export const registerUser = catchAsync(async (req, res) => {
     const { name, email, password } = req.body;
-
+  
     const userExist = await User.findOne({ email });
-
+  
     if (userExist) {
-        res.status(400);
-        throw new Error("User already exists");
+      res.status(400);
+      throw new Error("User already exists");
     }
-
+  
     const user = await User.create({
-        name,
-        email,
-        password,
+      name,
+      email,
+      password,
     });
-
+  
     if (user) {
-        res.status(201);
-
-        res.json({
-            _id: user._id,
-            name: user.name,
-            email: user.email,
-            isAdmin: user.isAdmin,
-            token: generateToken(user._id),
-        });
+      res.status(201);
+      res.json({
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        token: generateToken(user._id),
+      });
     } else {
-        res.status(400);
-        throw new Error("Invalid User Data");
+      res.status(400);
+      throw new Error("Invalid User Data");
     }
-});
-
+  });
 
