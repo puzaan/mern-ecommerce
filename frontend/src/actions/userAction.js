@@ -10,6 +10,8 @@ import {
     USER_DETAILS_REQUEST,
     USER_DETAILS_SUCESS,
     USER_DETAILS_FAIL,
+    USER_UPDATE_PROFILE_SUCESS,
+    USER_UPDATE_PROFILE_FAIL,
 } from "../constants/userConstants";
 
 export const logout = () => async (dispatch) => {
@@ -37,11 +39,11 @@ export const login = (email, password) => async (dispatch) => {
         localStorage.setItem("userInfo", JSON.stringify(data));
     } catch (err) {
         dispatch({
-          type: USER_LOGIN_FAIL,
-          payload:
-            err.response && err.response.data.message
-              ? err.response.data.message
-              : err.message,
+            type: USER_LOGIN_FAIL,
+            payload:
+                err.response && err.response.data.message
+                    ? err.response.data.message
+                    : err.message,
         });
     }
 };
@@ -65,11 +67,11 @@ export const register = (name, email, password) => async (dispatch) => {
         localStorage.setItem("userInfo", JSON.stringify(data));
     } catch (err) {
         dispatch({
-          type: USER_REGISTER_FAIL,
-          payload:
-            err.response && err.response.data.message
-              ? err.response.data.message
-              : err.message,
+            type: USER_REGISTER_FAIL,
+            payload:
+                err.response && err.response.data.message
+                    ? err.response.data.message
+                    : err.message,
         });
     }
 };
@@ -81,10 +83,10 @@ export const getUserDetails = () => async (dispatch, getState) => {
             type: USER_DETAILS_REQUEST,
         });
 
-        const {userLogin: {userInfo}} = getState()
+        const { userLogin: { userInfo } } = getState()
 
-        const config ={
-            headers:{
+        const config = {
+            headers: {
                 Authorization: `Bearer ${userInfo.token}`
             }
         }
@@ -97,11 +99,41 @@ export const getUserDetails = () => async (dispatch, getState) => {
 
     } catch (err) {
         dispatch({
-          type: USER_DETAILS_FAIL,
-          payload:
-            err.response && err.response.data.message
-              ? err.response.data.message
-              : err.message,
+            type: USER_DETAILS_FAIL,
+            payload:
+                err.response && err.response.data.message
+                    ? err.response.data.message
+                    : err.message,
+        });
+    }
+};
+
+export const updateUserProfile = (user) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: USER_UPDATE_PROFILE_SUCESS,
+        });
+
+        const { userLogin: { userInfo } } = getState()
+
+        const config = {
+            headers: {
+                Authorization: `Bearer ${userInfo.token}`
+            }
+        }
+        const { data } = await axios.put("http://localhost:5000/api/users/profile", user, config);
+        dispatch({
+            type: USER_UPDATE_PROFILE_SUCESS,
+            playload: data,
+        });
+
+    } catch (err) {
+        dispatch({
+            type: USER_UPDATE_PROFILE_FAIL,
+            payload:
+                err.response && err.response.data.message
+                    ? err.response.data.message
+                    : err.message,
         });
     }
 };
