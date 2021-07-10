@@ -23,16 +23,16 @@ const reducer = combineReducers({
     userDetails: userDetailsReducer,
     userUpdateProfile: userUpdateProfileReducer,
 });
-const cartItemsFromStorage = localStorage.getItem("cartItem")
-    ? JSON.parse(localStorage.getItem("cartItem"))
+const cartItemsFromStorage = localStorage.getItem("cartItems")
+    ? JSON.parse(localStorage.getItem("cartItems"))
     : [];
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
     ? JSON.parse(localStorage.getItem("userInfo"))
     : null;
 
-const shippingAddressFromStore = localStorage.getItem("ShippingAddress")
-    ? JSON.parse(localStorage.getItem("ShippingAddress"))
+const shippingAddressFromStore = localStorage.getItem("shippingAddress")
+    ? JSON.parse(localStorage.getItem("shippingAddress"))
     : {};
 
     const paymentMethodFromStorage = localStorage.getItem("paymentMethod")
