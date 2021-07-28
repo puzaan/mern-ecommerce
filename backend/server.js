@@ -18,6 +18,7 @@ import colors from 'colors'
 
 import productRoutes from './routes/productRoutes.js';
 import userRouters from './routes/userRoutes.js'
+import orderRoutes from './routes/orderRouts.js'
 
 import {notFound, errorHandler} from './middlewares/erroMiddleware.js'
 
@@ -56,6 +57,7 @@ app.get('/',(req, res) => {
 
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRouters);
+app.use('/api/orders', orderRoutes)
 app.use(notFound);
 app.use(errorHandler);
 
