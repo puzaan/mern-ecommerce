@@ -5,7 +5,7 @@ const router = express.Router()
 
 
 //router.post('/', protect, addOrderItems)
-router.route('/').post(protect, addOrderItems)
+router.route("/").post(protect, addOrderItems);
 
 
 export default router;

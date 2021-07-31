@@ -29,11 +29,13 @@ const addOrderItems = catchAsyncs(async (req, res)=>{
             paymentMethod,
             itemsPrice,
             shippingPrice,
-            totalPrice
+            totalPrice,
+            taxPrice
         })
         const createOrder = await order.save();
         res.status(201).json(createOrder)
     }
 })
+
 
 export {addOrderItems}
