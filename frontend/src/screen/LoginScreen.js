@@ -6,7 +6,7 @@ import FormContainer from "../components/FormContainer";
 import { login } from '../actions/userAction'
 import Message from '../components/Message'
 import Loader from '../components/Loder.js'
-const LoginScreen = ({ history }) => {
+const LoginScreen = ({ history, location  }) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -15,11 +15,12 @@ const LoginScreen = ({ history }) => {
 
     const userLogin = useSelector((state) => state.userLogin);
     const { loading, err, userInfo } = userLogin;
+    const redirect = location .search ? location .search.split("=")[1] : "/";
     useEffect(() => {
         if (userInfo) {
-            history.push('/')
+            history.push(redirect);
         }
-    })
+    }, [redirect, history, userInfo])
 
 
 

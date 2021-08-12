@@ -42,13 +42,16 @@ const addOrderItems = catchAsyncs(async (req, res)=>{
 //acces private
 
 const getOrderById = catchAsyncs(async(req, res) =>{
-    const order = await Order.findById(req.params.id)
-    .populate('user', "name email");
-    if(order){
+    const order = await Order.findById(req.params.id).populate(
+        "user",
+        "name email"
+      );
+    
+      if (order) {
         res.json(order);
-    }else{
+      } else {
         res.status(404);
-        throw new Error('Order not found');
-    }
-})
+        throw new Error("Order Not Found");
+      }
+    });
 export {addOrderItems, getOrderById}
